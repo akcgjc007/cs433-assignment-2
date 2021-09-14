@@ -10,16 +10,21 @@ while True:
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
         s.bind((HOST, PORT))
+        print("TCP Server is up.")
+        print("Listening at:", HOST+":"+str(PORT))
+        print()
         s.listen()
         conn, addr = s.accept()
 
-        print('Connected to', addr)
+        print("Connected to:", addr)
         data = conn.recv(1024)
+
         book_name = str(data, "utf-8")
-        print("Book name:", book_name)
+        print("Query for book:", book_name)
 
         all_books = [i[:-4] for i in listdir("./novels")]
         if book_name in all_books:
+            print("Book found, sending now.")
             # Open a file: file
             file = open("./novels/"+book_name+".txt", mode='r')
             # read all lines at once
@@ -28,8 +33,9 @@ while True:
             file.close()
             conn.sendall(bytes(all_of_it, 'utf-8'))
         else:
+            print("Book not found.")
             conn.sendall(bytes("Your book not found", 'utf-8'))
 
-        print("Bye Bye", addr)
+        print("Disconnected from:", addr)
         print()
         conn.close()

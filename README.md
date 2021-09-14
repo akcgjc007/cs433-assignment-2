@@ -21,3 +21,5 @@
 - Client receives the error or the file
 - Client shows the output to the user
 
+## Helpful commands
+-  Forcefully killing the server: `fuser -k -n tcp 12345`
