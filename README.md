@@ -22,4 +22,9 @@
 - Client shows the output to the user
 
 ## Helpful commands
--  Forcefully killing the server: `fuser -k -n tcp 12345`
+- python3 tcp_server.py
+- python3 tcp_client.py
+- python3 udp_server.py
+- python3 udp_client.py
+
+- Forcefully killing the server: `fuser -k -n tcp 12345`

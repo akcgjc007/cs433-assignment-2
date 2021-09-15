@@ -1,11 +1,13 @@
 import socket
 from os import getpid
 from sys import argv
+from time import time
 
 HOST = '127.0.0.1'  # The server's hostname or IP address
 PORT = 12345        # The port used by the server
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    start = time()
     s.connect((HOST, PORT))
     list_of_books = ['A Modest Proposal',
                      'How to Get Married, Although a Woman or, The Art of Pleasing Men',
@@ -38,3 +40,5 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     text_file.close()
 
     print("File recieved.")
+    end = time()
+    print("Total time elapsed:", end - start)

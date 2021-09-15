@@ -1,11 +1,15 @@
 import socket
 from os import getpid
 from sys import argv
+from time import time
 
 msgFromClient = "Hello UDP Server"
 bytesToSend = str.encode(msgFromClient)
 serverAddressPort = ("127.0.0.1", 20001)
 bufferSize = 1024
+
+start = time()
+
 
 # Create a UDP socket at client side
 UDPClientSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
@@ -36,3 +40,5 @@ text_file.write(str(all_data, 'utf-8'))
 text_file.close()
 
 print("File recieved.")
+end = time()
+print("Total time elapsed:", end - start)
