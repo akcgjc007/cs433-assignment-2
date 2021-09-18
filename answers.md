@@ -59,9 +59,9 @@ Sometimes, the files are showing differences.
 The diff command is giving very big output.
 
 ```
-pam@g3:~/Desktop/CS-433/ass2$ wc novels/'Old Granny Fox.txt' 'Old Granny Fox_tcp_53232.txt'
-2800  25852 142385 novels/Old Granny Fox.txt
-2800  25852 139585 Old Granny Fox_tcp_53232.txt
+pam@g3:~/Desktop/CS-433/ass2$ wc novels/book1_tcp_53232.txt
+2800  25852 142385 novels/book1.txt
+2800  25852 139585 book1_tcp_53232.txt
 ```
 
 ## Exp A
