@@ -1,8 +1,9 @@
-from os import listdir
 import socket
+from novels.novel_list import novel_list
 
-HOST = '127.0.0.1'  # Standard loopback interface address (localhost)
-PORT = 12345     # Port to listen on (non-privileged ports are > 1023)
+HOST = '127.0.0.1'  # The server's hostname or IP address
+PORT = 12345        # The port used by the server
+BUFFER_SIZE = 1024  # The buffer size to be used
 
 while True:
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -17,13 +18,12 @@ while True:
         conn, addr = s.accept()
 
         print("Connected to:", addr)
-        data = conn.recv(1024)
+        data = conn.recv(BUFFER_SIZE)
 
         book_name = str(data, "utf-8")
         print("Query for book:", book_name)
 
-        all_books = [i[:-4] for i in listdir("./novels")]
-        if book_name in all_books:
+        if book_name in novel_list:
             print("Book found, sending now.")
             # Open a file: file
             file = open("./novels/"+book_name+".txt", mode='r')
