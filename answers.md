@@ -12,6 +12,14 @@ Installed.
 - 'Roses: or a Monograph on The Genus Rosa.txt'
 - 'The Atom and the Ocean.txt'
 
+### 2 b)
+
+- truncate -s 10K Test.txt
+- cat novels/book1.txt > Test.txt
+- md5sum novels/book1.txt | awk '{print $1}'
+- md5sum Test.txt | awk '{print $1}'
+- cmp novels/book1.txt Test.txt
+
 ## 3
 
 For running, you can use:
@@ -51,11 +59,10 @@ Sometimes, the files are showing differences.
 The diff command is giving very big output.
 
 ```
-pam@g3:~/Desktop/CS-433/ass2$ wc novels/'Old Granny Fox.txt' 'Old Granny Fox_tcp_53232.txt'  
+pam@g3:~/Desktop/CS-433/ass2$ wc novels/'Old Granny Fox.txt' 'Old Granny Fox_tcp_53232.txt'
 2800  25852 142385 novels/Old Granny Fox.txt
 2800  25852 139585 Old Granny Fox_tcp_53232.txt
 ```
-
 
 ## Exp A
 
@@ -73,7 +80,8 @@ pam@g3:~/Desktop/CS-433/ass2$ wc novels/'Old Granny Fox.txt' 'Old Granny Fox_tcp
 | tcp-10ms   | 13                   | 39819            | 39094              | large output seen |
 | udp-10ms   | 51                   | 39819            | 39094              | large output seen |
 
-
 ## Exp 5
-Yes, we can run both the udp and tcp server-client programs simultaneously. It works as I observed in my VS-Code terminals.
 
+Referencing: https://stackoverflow.com/questions/6437383/can-tcp-and-udp-sockets-use-the-same-port
+
+As discussed in the above port, each request is made of a quintuple consists of source IP, dest. IP, source port, dest. port and protocol(TCP or UDP). Hence, both ports can be used at the same time.

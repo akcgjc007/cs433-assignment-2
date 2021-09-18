@@ -1,23 +1,8 @@
 # Computer Networks | CN433 | Assignment 2
 
-- truncate -s 10K Test.txt
-- cat novels/'A Modest Proposal.txt' > Test.txt
-- md5sum novels/'A Modest Proposal.txt' | awk '{print $1}'
-- md5sum Test.txt | awk '{print $1}'
-- cmp novels/'A Modest Proposal.txt' Test.txt
+## Answers
 
-## TCP Server-Client Communication
-
-- Server listens on a port
-- Client accepts a book name from user
-- Client sends the book name to the server
-- Server recieves the book name from the client
-- Server searches the book name in its database
-- Server throws error if book not found
-- Server sends the book file if book is found
-- Server closes the connection
-- Client receives the error or the file
-- Client shows the output to the user
+- Check [answers.md](answers.md)
 
 ## Helpful commands
 
