@@ -7,13 +7,13 @@ t_s:
 	$(CC) tcp_server.py
 
 t_c:
-	$(CC) tcp_client.py 2
+	$(CC) tcp_client.py 1
 
 u_s:
 	$(CC) udp_server.py
 
 u_c:
-	$(CC) udp_client.py 2
+	$(CC) udp_client.py 1
 	
 clean:
 	rm -rf *.txt

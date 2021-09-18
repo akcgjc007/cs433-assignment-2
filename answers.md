@@ -22,4 +22,58 @@ For running, you can use:
 
 ## 3.1
 
-Largest file
+---
+
+|         | Largest file-TCP(in us) | Throughput  | Largest file-UDP(in us) | Throughput  | Test-file-TCP(in us) | Throughput  | Test-file-UDP(in us) | Throughput  |
+| ------- | ----------------------- | ----------- | ----------------------- | ----------- | -------------------- | ----------- | -------------------- | ----------- |
+| 1       | 5808                    | 33.47055785 | 5018                    | 38.73993623 | 423                  | 24.20803783 | 587                  | 17.44463373 |
+| 2       | 6177                    | 31.47110248 | 7169                    | 27.11633422 | 432                  | 23.7037037  | 448                  | 22.85714286 |
+| 3       | 5576                    | 34.86316356 | 4952                    | 39.2562601  | 526                  | 19.46768061 | 535                  | 19.14018692 |
+| 4       | 6217                    | 31.2686183  | 6856                    | 28.35428821 | 449                  | 22.80623608 | 547                  | 18.7202925  |
+| 5       | 5927                    | 32.79854901 | 6144                    | 31.64013672 | 386                  | 26.52849741 | 480                  | 21.33333333 |
+| 6       | 5693                    | 34.14667135 | 5664                    | 34.32150424 | 696                  | 14.71264368 | 428                  | 23.92523364 |
+| 7       | 6137                    | 31.67622617 | 6056                    | 32.09990092 | 486                  | 21.06995885 | 586                  | 17.47440273 |
+| 8       | 5851                    | 33.224577   | 5423                    | 35.84676378 | 377                  | 27.16180371 | 450                  | 22.75555556 |
+| 9       | 5662                    | 34.33362769 | 5774                    | 33.66764808 | 453                  | 22.60485651 | 472                  | 21.69491525 |
+| 10      | 6684                    | 29.08393178 | 5846                    | 33.2529935  | 491                  | 20.85539715 | 459                  | 22.30936819 |
+| Average | 5973.2                  | 32.54486707 | 5890.2                  | 33.00346338 | 471.9                | 21.69951261 | 499.2                | 20.51282051 |
+
+---
+
+## 3.2
+
+Already mentioned in above answer.
+
+## 3.3
+
+Sometimes, the files are showing differences.
+
+The diff command is giving very big output.
+
+```
+pam@g3:~/Desktop/CS-433/ass2$ wc novels/'Old Granny Fox.txt' 'Old Granny Fox_tcp_53232.txt'  
+2800  25852 142385 novels/Old Granny Fox.txt
+2800  25852 139585 Old Granny Fox_tcp_53232.txt
+```
+
+
+## Exp A
+
+|            | Packets on Wireshark | Actual file size | Received file size | diff command      |
+| ---------- | -------------------- | ---------------- | ------------------ | ----------------- |
+| tcp - 2048 | 11                   | 39819            | 39094              | large output seen |
+| udp - 2048 | 41                   | 39819            | 39094              | large output seen |
+|            |                      |                  |                    |                   |
+| tcp-512    | 11                   | 39819            | 39094              | large output seen |
+| udp-512    | 41                   | 39819            | 19638              | large output seen |
+|            |                      |                  |                    |                   |
+| tcp-q3     | 11                   | 39819            | 39094              | large output seen |
+| udp-q3     | 79                   | 39819            | 39094              | large output seen |
+|            |                      |                  |                    |                   |
+| tcp-10ms   | 13                   | 39819            | 39094              | large output seen |
+| udp-10ms   | 51                   | 39819            | 39094              | large output seen |
+
+
+## Exp 5
+Yes, we can run both the udp and tcp server-client programs simultaneously. It works as I observed in my VS-Code terminals.
+

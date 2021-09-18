@@ -1,7 +1,7 @@
 import socket
 from os import getpid
 from sys import argv
-from time import time
+from time import time, sleep
 from novels.novel_list import novel_list
 
 HOST = '127.0.0.1'  # The server's hostname or IP address
@@ -27,7 +27,9 @@ UDPClientSocket.sendto(res, (HOST, PORT))
 all_data = b''
 data = UDPClientSocket.recvfrom(BUFFER_SIZE)
 while data[0] != b'END':
+    sleep(0.001)
     all_data += data[0]
+    print(len(data[0]), len(data[1]))
     data = UDPClientSocket.recvfrom(BUFFER_SIZE)
 
 text_file = open(text+"_udp_"+str(getpid())+".txt", "w")

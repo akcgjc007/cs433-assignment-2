@@ -1,7 +1,7 @@
 import socket
 from os import getpid
 from sys import argv
-from time import time
+from time import time, sleep
 from novels.novel_list import novel_list
 
 HOST = '127.0.0.1'  # The server's hostname or IP address
@@ -27,6 +27,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     all_data = b''
     data = s.recv(BUFFER_SIZE)
     while data:
+        sleep(0.001)
         all_data += data
         data = s.recv(BUFFER_SIZE)
 
